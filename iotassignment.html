@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>7-Day IoT & PCB Learning Journey — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --muted: #64748b;
+      --accent1: #e0f2fe;
+      --accent2: #dbeafe;
+      --accent3: #fef9c3;
+      --font: 'Inter', system-ui, sans-serif;
+    }
+    body{
+      margin:0; font-family:var(--font); background:var(--bg); color:#1e293b; padding:32px;
+    }
+    .container{max-width:1100px;margin:0 auto}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#38bdf8,#6366f1);display:grid;place-items:center;font-weight:800;color:white}
+    h1{font-size:20px;margin:0;color:#0f172a}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+    .project-card{border-radius:12px;background:var(--card);padding:12px;overflow:hidden;box-shadow:0 4px 8px rgba(0,0,0,0.04)}
+    .project-card img{width:100%;border-radius:10px;display:block;margin-bottom:8px}
+    .project-card h3{margin:0;font-size:16px;color:#0f172a}
+    .project-card p{font-size:13px;color:var(--muted);margin:6px 0 0 0}
+
+    /* faint colored backgrounds for variety */
+    .project-card:nth-child(1){background:var(--accent1)}
+    .project-card:nth-child(2){background:var(--accent2)}
+    .project-card:nth-child(3){background:var(--accent3)}
+    .project-card:nth-child(4){background:var(--accent1)}
+    .project-card:nth-child(5){background:var(--accent2)}
+    .project-card:nth-child(6){background:var(--accent3)}
+    .project-card:nth-child(7){background:var(--accent1)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">IoT</div>
+        <div>
+          <h1>7-Day IoT & PCB Design Journey</h1>
+          <p class="lead">Showcasing daily learnings and projects</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="gallery">
+      <div class="project-card">
+        <img src="./hedy mcu.jpeg" alt="Day 1 project">
+        <h3>Day 1 – ESP8266 Basics</h3>
+        <p>Blink programs with onboard and external LEDs.</p>
+      </div>
+      <div class="project-card">
+        <img src="./IOT Email sender code.jpeg" alt="Day 2 project">
+        <h3>Day 2 – Wi-Fi & Web Server</h3>
+        <p>ESP8266 connected to Wi-Fi and controlled LED via browser.</p>
+      </div>
+      <div class="project-card">
+        <img src="./ultrasonic sensor results.jpeg" alt="Day 3 project">
+        <h3>Day 3 – Ultrasonic Sensor</h3>
+        <p>Measured distance and displayed live on a web page.</p>
+      </div>
+      <div class="project-card">
+        <img src="./IOT Email sender code.jpeg" alt="Day 4 project">
+        <h3>Day 4 – MIT App Integration</h3>
+        <p>Created mobile app to display sensor data and control outputs.</p>
+      </div>
+      <div class="project-card">
+        <img src="./PCB design.jpeg" alt="Day 5 project">
+        <h3>Day 5 – PCB Schematic</h3>
+        <p>Designed AC to DC converter schematic and studied PCB basics.</p>
+      </div>
+      <div class="project-card">
+        <img src="./PCB design result.jpeg" alt="Day 6 project">
+        <h3>Day 6 – PCB Layout</h3>
+        <p>Converted schematic to layout, routing and DRC check.</p>
+      </div>
+      <div class="project-card">
+        <img src="./PCB design result 1.jpeg" alt="Day 7 project">
+        <h3>Day 7 – Motor Controller</h3>
+        <p>Designed DC motor speed controller schematic and layout.</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

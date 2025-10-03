@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swaraj Deshmukh | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Your existing CSS remains the same */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --text-color: #1f2937;
+            --bg-color: #ffffff;
+            --card-bg: #f9fafb;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        body.dark-mode {
+            --text-color: #f9fafb;
+            --bg-color: #111827;
+            --card-bg: #1f2937;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-color);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(20deg); }
+        }
+
+        .logo span {
+            font-weight: 300;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mode-toggle {
+            background: var(--card-bg);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+            font-size: 1.2rem;
+        }
+
+        .mode-toggle:hover {
+            transform: rotate(180deg) scale(1.1);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: var(--text-color);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        /* Home Section */
+        .home-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            opacity: 0.1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        .home-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .home-text h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .home-text h1 span {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .home-text h2 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .home-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .animate-text {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .home-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .secondary-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .profile-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: var(--shadow-hover);
+            transition: all 0.5s ease;
+            animation: profileFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes profileFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .profile-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-down a {
+            color: var(--primary-color);
+            font-size: 2rem;
+            text-decoration: none;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .about-text:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text h3 {
+            margin: 30px 0 15px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .education-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .education-list li {
+            padding: 12px 20px;
+            margin: 10px 0;
+            background: var(--bg-color);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .education-list li:hover {
+            transform: translateX(10px);
+            border-left-width: 6px;
+        }
+
+        .education-list span {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .about-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn i {
+            margin-right: 8px;
+        }
+
+        /* Modules Section */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .module-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .module-card:hover::before {
+            left: 0;
+            opacity: 0.1;
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .module-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .module-card:hover .module-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .module-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .module-card p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            flex-grow: 1;
+        }
+
+        /* NEW LEARN MORE BUTTON STYLES */
+        .module-toggle {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
+        .module-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .module-toggle:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .module-toggle:hover::before {
+            left: 0;
+        }
+
+        .module-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .module-toggle:hover i {
+            transform: translateX(3px);
+        }
+
+        .module-card.active .module-toggle {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-color: transparent;
+        }
+
+        .module-card.active .module-toggle i {
+            transform: rotate(180deg);
+        }
+
+        .module-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 15px;
+        }
+
+        .module-card.active .module-details {
+            max-height: 200px;
+        }
+
+        /* External file link button styles */
+        .external-link {
+            background: transparent;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .external-link:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .file-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            min-width: 30px;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .home-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .home-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .modules-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--bg-color);
+                width: 100%;
+                text-align: center;
+                transition: all 0.3s ease;
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .home-text h1 {
+                font-size: 2rem;
+            }
+
+            .home-text h2 {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-text {
+                padding: 25px;
+            }
+
+            .home-buttons,
+            .about-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .home-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <header>
+        <nav id="navbar">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div class="logo">
+                    <h1>Swaraj<span>Deshmukh</span></h1>
+                </div>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#modules" class="nav-link">Modules</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><button id="dark-mode-toggle" class="mode-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="home-section">
+            <div class="container">
+                <div class="home-content">
+                    <div class="home-text">
+                        <h1 class="animate-text">Hello, I'm <span>Swaraj Deshmukh</span></h1>
+                        <h2 class="animate-text delay-1">Electronics & Telecommunications Engineering Student</h2>
+                        <p class="animate-text delay-2">Passionate about technology, innovation, and problem-solving.</p>
+                        <div class="home-buttons animate-text delay-3">
+                            <a href="#contact" class="btn primary-btn">Get In Touch</a>
+                            <a href="#about" class="btn secondary-btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="home-image animate-text delay-2">
+                        <div class="profile-container">
+                            <img src="./image 1.jpeg" alt="Swaraj Deshmukh" class="profile-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-down">
+                <a href="#about"><i class="fas fa-chevron-down"></i></a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I am a first-year Electronics and Telecommunications Engineering student at Shri Sant Gajanan Maharaj College of Engineering. With strong communication skills and an eagerness to learn and grow, I am developing my technical expertise while building valuable soft skills.</p>
+                        <p>As an Innovo'25 coordinator, I've demonstrated excellent management and communication abilities while working effectively in team environments.</p>
+                        <div class="about-buttons">
+                            <a href="./Swaraj resume.pdf" class="btn primary-btn download-btn">
+                                <i class="fas fa-download"></i> Download Resume
+                            </a>
+                            <a href="https://www.linkedin.com/in/swaraj-deshmukh-90334832b" target="_blank" class="btn secondary-btn">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modules Section -->
+        <section id="modules" class="modules-section">
+            <div class="container">
+                <h2 class="section-title">Modules</h2>
+                <div class="modules-grid">
+                    <!-- Module 1 -->
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>HTML, CSS, JavaScript fundamentals and responsive design principles.</p>
+                        <button class="module-toggle">
+                            <span>Learn More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="module-details">
+                            <p>Exploring modern web development techniques, including responsive design, frontend frameworks, and interactive UI/UX implementation.</p>
+                            <div class="file-links">
+                                <a href="file:///D:/swaraj%20portfolio/assignment1.html" class="external-link">
+                                    <i class="fas fa-external-link-alt"></i> Assignment
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Module 2 -->
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>IoT and PCB Design</h3>
+                        <p>Printed Circuit Board design and fabrication.</p>
+                        <button class="module-toggle">
+                            <span>Learn More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="module-details">
+                            <p>Designing and developing printed circuit boards for electronic devices, including layout optimization and component placement.</p>
+                            <div class="file-links">
+                                <a href="./iotassignment.html" class="external-link">
+                                    <i class="fas fa-external-link-alt"></i> Assignment
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Module 3 -->
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3>CAD</h3>
+                        <p>Computer-Aided Design for electronic and mechanical components.</p>
+                        <button class="module-toggle">
+                            <span>Learn More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="module-details">
+                            <p>Using industry-standard CAD software to design precise electronic and mechanical components for various engineering applications.</p>
+                            <div class="file-links">
+                                <a href="./cad-tutorial.pdf" class="external-link" target="_blank">
+                                    <i class="fas fa-file-pdf"></i> Tutorial PDF
+                                </a>
+                                <a href="./cad-project.zip" class="external-link">
+                                    <i class="fas fa-download"></i> Project Files
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Module 4 -->
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h3>3D Printing</h3>
+                        <p>Additive manufacturing for prototyping and production.</p>
+                        <button class="module-toggle">
+                            <span>Learn More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="module-details">
+                            <p>Utilizing 3D printing technology to create physical prototypes and components for engineering projects and innovative solutions.</p>
+                            <div class="file-links">
+                                <a href="./3d-printing-guide.pdf" class="external-link" target="_blank">
+                                    <i class="fas fa-file-pdf"></i> Guide PDF
+                                </a>
+                                <a href="./3d-models.stl" class="external-link">
+                                    <i class="fas fa-cube"></i> 3D Models
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Module 7 -->
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <i class="fab fa-java"></i>
+                        </div>
+                        <h3>Java</h3>
+                        <p>Object-oriented programming and application development.</p>
+                        <button class="module-toggle">
+                            <span>Learn More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="module-details">
+                            <p>Building robust applications using Java programming language with object-oriented principles and design patterns.</p>
+                            <div class="file-links">
+                                <a href="./java-examples.zip" class="external-link">
+                                    <i class="fas fa-download"></i> Code Examples
+                                </a>
+                                <a href="./java-cheatsheet.pdf" class="external-link" target="_blank">
+                                    <i class="fas fa-file-pdf"></i> Cheatsheet
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Module 8 -->
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Networking</h3>
+                        <p>Computer network design, implementation, and security.</p>
+                        <button class="module-toggle">
+                            <span>Learn More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="module-details">
+                            <p>Understanding network protocols, architectures, and security principles for designing and implementing robust communication systems.</p>
+                            <div class="file-links">
+                                <a href="./networking-lab.pdf" class="external-link" target="_blank">
+                                    <i class="fas fa-file-pdf"></i> Lab Manual
+                                </a>
+                                <a href="./network-diagrams.zip" class="external-link">
+                                    <i class="fas fa-project-diagram"></i> Diagrams
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Module 9 -->
+                    <div class="module-card">
+                        <div class="module-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI/ML</h3>
+                        <p>Artificial Intelligence and Machine Learning fundamentals.</p>
+                        <button class="module-toggle">
+                            <span>Learn More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="module-details">
+                            <p>Exploring machine learning algorithms, neural networks, and AI applications in solving complex engineering problems.</p>
+                            <div class="file-links">
+                                <a href="./ai-ml-resources.pdf" class="external-link" target="_blank">
+                                    <i class="fas fa-file-pdf"></i> Resources
+                                </a>
+                                <a href="./ml-notebooks.zip" class="external-link">
+                                    <i class="fas fa-code"></i> Code Notebooks
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Shri sant gajanan maharaj college of engineering, shegaon</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+91 8983215734</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>swarajdeshmukh1986@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                                <span class="error-message" id="name-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                                <span class="error-message" id="email-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                                <span class="error-message" id="message-error"></span>
+                            </div>
+                            <button type="submit" class="btn primary-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Swaraj Deshmukh. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const icon = darkModeToggle.querySelector('i');
+
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme') || 'light-mode';
+        body.className = currentTheme;
+        icon.className = currentTheme === 'dark-mode' ? 'fas fa-sun' : 'fas fa-moon';
+
+        darkModeToggle.addEventListener('click', () => {
+            if (body.classList.contains('light-mode')) {
+                body.classList.replace('light-mode', 'dark-mode');
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark-mode');
+            } else {
+                body.classList.replace('dark-mode', 'light-mode');
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light-mode');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Module cards toggle - Fixed implementation
+        document.querySelectorAll('.module-toggle').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const card = button.closest('.module-card');
+                const isActive = card.classList.contains('active');
+                const buttonText = button.querySelector('span');
+                const buttonIcon = button.querySelector('i');
+                
+                // Close all other open modules
+                document.querySelectorAll('.module-card.active').forEach(activeCard => {
+                    if (activeCard !== card) {
+                        activeCard.classList.remove('active');
+                        const activeButton = activeCard.querySelector('.module-toggle');
+                        activeButton.querySelector('span').textContent = 'Learn More';
+                        activeButton.querySelector('i').className = 'fas fa-chevron-down';
+                    }
+                });
+                
+                // Toggle current module
+                card.classList.toggle('active');
+                if (card.classList.contains('active')) {
+                    buttonText.textContent = 'Show Less';
+                    buttonIcon.className = 'fas fa-chevron-up';
+                } else {
+                    buttonText.textContent = 'Learn More';
+                    buttonIcon.className = 'fas fa-chevron-down';
+                }
+            });
+        });
+
+        // Form validation
+        const contactForm = document.getElementById('contact-form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let isValid = true;
+
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.textContent = '';
+            });
+
+            // Validate name
+            if (nameInput.value.trim().length < 2) {
+                document.getElementById('name-error').textContent = 'Please enter a valid name';
+                isValid = false;
+            }
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value.trim())) {
+                document.getElementById('email-error').textContent = 'Please enter a valid email';
+                isValid = false;
+            }
+
+            // Validate message
+            if (messageInput.value.trim().length < 10) {
+                document.getElementById('message-error').textContent = 'Message must be at least 10 characters';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe module cards and sections
+        document.querySelectorAll('.module-card, .contact-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add parallax effect to home section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.home-section');
+            if (parallax && scrolled < window.innerHeight) {
+                parallax.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Add active state to navigation based on scroll position
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
